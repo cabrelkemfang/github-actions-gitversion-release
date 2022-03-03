@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+      - hotfix/*
+      - feature/*
+      - release/*
+env:
+  GITHUB_BRANCH_SHA: ${{ github.sha }}
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: Build project
+        run: |
+          echo Build project
